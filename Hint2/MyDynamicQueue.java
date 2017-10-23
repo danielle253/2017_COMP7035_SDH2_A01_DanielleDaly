@@ -35,7 +35,7 @@ public class MyDynamicQueue implements MyQueue {
 	//-------------------------------------------------------------------
 	// Basic Operation (Partial) --> Get first element from front of MyQueue: first
 	//-------------------------------------------------------------------
-	//Returns -1`if very bad
+	//Returns -1 if very bad
 	public int first(){
 		int info = -1;
 		if(!isEmpty()) {
@@ -56,7 +56,6 @@ public class MyDynamicQueue implements MyQueue {
 
 		}
 		else {
-			//Extra node (current) = head
 			current = head;
 
 			for(int i = 1; i < numItems; i++) {
@@ -65,16 +64,6 @@ public class MyDynamicQueue implements MyQueue {
 			}
 
 			current.setNext(newNode);
-			
-
-			//			//Go through until space is found
-			//			while(node.getNext() != null)
-			//
-			//				node = node.getNext();
-			//
-			//			//Extra node's next to current
-			//			node.setNext(newNode);
-			//			this.numItems++;
 		}
 		numItems++;
 
@@ -87,6 +76,7 @@ public class MyDynamicQueue implements MyQueue {
 	public void remove(){
 		if(!isEmpty()) {
 			head = head.getNext();
+			//Decrement 
 			this.numItems--;
 		}
 	}
