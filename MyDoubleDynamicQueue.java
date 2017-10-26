@@ -2,7 +2,6 @@ package partThree;
 public class MyDoubleDynamicQueue<T> implements MyQueue<T> {
 
 	
-	//Where return give sysout
 	//--------------------------------------------------
 	// Attributes
 	//--------------------------------------------------
@@ -65,10 +64,6 @@ public class MyDoubleDynamicQueue<T> implements MyQueue<T> {
 			MyDoubleLinkedNode<T> newNode = new MyDoubleLinkedNode<T>(null, element, currentHead);
 			head = newNode;
 			currentHead.setLeft(newNode);
-			
-//			currentHead = head;
-//			head = new MyDoubleLinkedNode<T>(null, element, currentHead);
-//			currentHead.setLeft(head);
 		} 
 		else {
 			head = new MyDoubleLinkedNode<T>(null, element, null);
@@ -103,7 +98,7 @@ public class MyDoubleDynamicQueue<T> implements MyQueue<T> {
 	//-------------------------------------------------------------------
 	public T last(){
 		
-		if(!this.isEmpty()) {
+		if(numItems > 0) {
 			return this.tail.getInfo();
 		}else {
 			System.out.println("Error - List is empty");
@@ -120,24 +115,21 @@ public class MyDoubleDynamicQueue<T> implements MyQueue<T> {
 		
 		
 		//Initialize node
-				MyDoubleLinkedNode<T> currentHead = tail;
-
-				if(numItems > 0) {
-					MyDoubleLinkedNode<T> newNode = new MyDoubleLinkedNode<T>(currentHead, element, null );
-					tail = newNode;
-					currentHead.setRight(newNode);
+		MyDoubleLinkedNode<T> currentHead = tail;
+		
+		if(numItems > 0) {
+			MyDoubleLinkedNode<T> newNode = new MyDoubleLinkedNode<T>(currentHead, element, null );
+			tail = newNode;
+			currentHead.setRight(newNode);
 					
-//					currentHead = head;
-//					head = new MyDoubleLinkedNode<T>(null, element, currentHead);
-//					currentHead.setLeft(head);
-				} 
-				else {
-					tail = new MyDoubleLinkedNode<T>(null, element, null);
-					head = tail;
-				}
+		} 
+		else {
+			tail = new MyDoubleLinkedNode<T>(null, element, null);
+			head = tail;
+		}
 
-				//Increment number of items by 1
-				this.numItems++;
+		//Increment number of items by 1
+		this.numItems++;
 
 	}
 	
@@ -146,7 +138,7 @@ public class MyDoubleDynamicQueue<T> implements MyQueue<T> {
 	//-------------------------------------------------------------------	
 	public void removeByLast(){
 		
-		if(!this.isEmpty()) {
+		if(numItems > 0) {
 			tail = tail.getLeft();
 			this.numItems--;
 			System.out.println("Last item has been removed.");
