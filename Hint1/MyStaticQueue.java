@@ -24,18 +24,13 @@ public class MyStaticQueue implements MyQueue {
 	// Basic Operation --> Check if MyQueue is empty: isEmpty
 	//-------------------------------------------------------------------	
 	public boolean isEmpty(){
-		//-----------------------------
-		//Output Variable --> InitialValue
-		//-----------------------------
+
 		boolean isEmpty = true;
 
 		if(numItems > 0) {
 			isEmpty = false;
 		}
-		//Are all variables really necessary???!!!
-		//-----------------------------
-		//Output Variable --> Return FinalValue
-		//-----------------------------	
+
 		return isEmpty;
 
 	}
@@ -44,14 +39,14 @@ public class MyStaticQueue implements MyQueue {
 	// Basic Operation (Partial) --> Get first element from front of MyQueue: first
 	//-------------------------------------------------------------------
 	public int first(){
-		//-----------------------------
-		//Output Variable --> InitialValue
-		//-----------------------------
-
 		int res = 0;
+		if(numItems > 0) {
 
-		res = this.items[0];
-
+			res = this.items[0];
+		}
+		else {
+			System.out.println("Sorry - queue empty");
+		}
 		return res;
 
 	}
@@ -62,13 +57,13 @@ public class MyStaticQueue implements MyQueue {
 	public void add(int element){
 
 		//Queue is not full
-		if(numItems <= maxItems) {
-			//1.2. We add the item at the desired index
-				
+		if(numItems < maxItems) {
+
+			//We add the item at the desired index	
 			this.items[numItems] = element;
-			numItems++;
+			this.numItems++;
 		}
-		
+
 		//Queue is full
 		else if(numItems == maxItems){
 			System.out.println("Sorry - queue full");
@@ -83,24 +78,20 @@ public class MyStaticQueue implements MyQueue {
 	public void remove(){
 
 		int index = 0;
-		//Validate empty
-		//1.1. We traverse all existing items from index to 0, shifting them one position to the left
 
+
+		//Validate empty
 		if(numItems <= 0) {
 			System.out.println("Sorry - queue empty");
 		}
 		else {
+			//Decrement
 			numItems--;
+			//We traverse all existing items from index to 0, shifting them one position to the left
 			for (int i = index; i < (this.numItems); i++)
 				this.items[i] = this.items[i+1];
-			
+
 		}
-		//1.2. We decrease the number of items
-		//	this.numItems = this.numItems - 1;
-
-
-
-
 
 	}
 
