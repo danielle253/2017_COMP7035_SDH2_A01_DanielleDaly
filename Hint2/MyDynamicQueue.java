@@ -15,8 +15,6 @@ public class MyDynamicQueue implements MyQueue {
 		this.head = null;
 		this.numItems = 0;
 
-
-
 	}
 
 	//-------------------------------------------------------------------
@@ -35,10 +33,12 @@ public class MyDynamicQueue implements MyQueue {
 	//-------------------------------------------------------------------
 	// Basic Operation (Partial) --> Get first element from front of MyQueue: first
 	//-------------------------------------------------------------------
-	//Returns -1 if very bad
+	
+	//Returns -1 if empty
 	public int first(){
 		int info = -1;
-		if(!isEmpty()) {
+		
+		if(numItems > 0) {
 			info = head.getInfo();
 		}
 		return info;
@@ -56,6 +56,7 @@ public class MyDynamicQueue implements MyQueue {
 
 		}
 		else {
+		
 			current = head;
 
 			for(int i = 1; i < numItems; i++) {
@@ -64,9 +65,9 @@ public class MyDynamicQueue implements MyQueue {
 			}
 
 			current.setNext(newNode);
+			
 		}
 		numItems++;
-
 
 	}
 
@@ -74,9 +75,8 @@ public class MyDynamicQueue implements MyQueue {
 	// Basic Operation (Partial) --> Remove element from front of MyQueue: remove 
 	//-------------------------------------------------------------------	
 	public void remove(){
-		if(!isEmpty()) {
+		if(numItems > 0) {
 			head = head.getNext();
-			//Decrement 
 			this.numItems--;
 		}
 	}
